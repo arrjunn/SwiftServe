@@ -1,0 +1,21 @@
+{
+  "name": "@swiftserve/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./money": "./src/utils/money.js",
+    "./gst": "./src/utils/gst.js",
+    "./constants": "./src/constants/index.js",
+    "./types": "./src/types/index.js",
+    "./validators": "./src/utils/validators.js"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.2"
+  }
+}
