@@ -212,7 +212,7 @@ export default function KioskPaymentScreen({ onPaymentComplete, onBack }) {
 
           {/* Timer */}
           <div style={styles.timerRow}>
-            <span style={{ ...styles.timerText, color: timeLeft <= 60 ? "#ef4444" : "#6b7280" }}>
+            <span style={{ ...styles.timerText, color: timeLeft <= 60 ? "#ef4444" : "var(--text-muted)" }}>
               {timeLeft > 0
                 ? `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")} remaining`
                 : "QR expired — please try again"}
@@ -267,7 +267,7 @@ const styles = {
   wrapper: {
     position: "fixed",
     top: 0, left: 0, right: 0, bottom: 0,
-    backgroundColor: "#ffffff",
+    backgroundColor: "var(--bg-primary)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -287,7 +287,7 @@ const styles = {
   title: {
     fontSize: 26,
     fontWeight: 800,
-    color: "#111827",
+    color: "var(--text-primary)",
     margin: 0,
     textAlign: "center",
   },
@@ -325,8 +325,8 @@ const styles = {
     width: "100%",
     minHeight: 80,
     padding: "18px 20px",
-    backgroundColor: "#f8fafc",
-    border: "2px solid #e5e7eb",
+    backgroundColor: "var(--bg-primary)",
+    border: "2px solid var(--border-light)",
     borderRadius: 16,
     display: "flex",
     alignItems: "center",
@@ -348,15 +348,15 @@ const styles = {
   optionTitle: {
     fontSize: 18,
     fontWeight: 700,
-    color: "#111827",
+    color: "var(--text-primary)",
   },
   optionDesc: {
     fontSize: 14,
-    color: "#6b7280",
+    color: "var(--text-muted)",
   },
   optionArrow: {
     fontSize: 22,
-    color: "#9ca3af",
+    color: "var(--text-dim)",
     flexShrink: 0,
   },
 
@@ -365,21 +365,21 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#f8fafc",
+    backgroundColor: "var(--bg-primary)",
     borderRadius: 14,
     padding: "18px 20px",
-    border: "1px solid #e5e7eb",
+    border: "1px solid var(--border-light)",
     marginTop: 8,
   },
   totalLabel: {
     fontSize: 16,
     fontWeight: 600,
-    color: "#374151",
+    color: "var(--text-secondary)",
   },
   totalValue: {
     fontSize: 22,
     fontWeight: 800,
-    color: "#111827",
+    color: "var(--text-primary)",
   },
 
   /* ---- UPI Step ---- */
@@ -390,10 +390,10 @@ const styles = {
     fontFamily: "monospace",
   },
   qrBox: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "var(--bg-primary)",
     borderRadius: 16,
     padding: 16,
-    border: "2px solid #e5e7eb",
+    border: "2px solid var(--border-light)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -409,17 +409,17 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "#9ca3af",
+    color: "var(--text-dim)",
     fontSize: 16,
   },
   vpaText: {
     fontSize: 14,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     fontFamily: "monospace",
   },
   appsText: {
     fontSize: 14,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     textAlign: "center",
     margin: 0,
     lineHeight: 1.5,
@@ -447,7 +447,7 @@ const styles = {
   statusText: {
     fontSize: 14,
     fontWeight: 600,
-    color: "#374151",
+    color: "var(--text-secondary)",
   },
   confirmBtn: {
     width: "100%",
@@ -481,9 +481,9 @@ const styles = {
     minHeight: 56,
     padding: "14px 24px",
     backgroundColor: "transparent",
-    border: "2px solid #e5e7eb",
+    border: "2px solid var(--border-light)",
     borderRadius: 14,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     fontSize: 16,
     fontWeight: 600,
     cursor: "pointer",
@@ -505,7 +505,7 @@ const styles = {
   loadingText: {
     fontSize: 20,
     fontWeight: 600,
-    color: "#374151",
+    color: "var(--text-secondary)",
     marginTop: 80,
   },
 };

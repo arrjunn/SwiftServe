@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 /**
  * KioskWelcomeScreen — Full-screen customer-facing kiosk welcome.
- * Always light theme with green (#22c55e) accent.
+ * Supports light/dark theme via CSS variables. Green (#22c55e) accent.
  *
  * Props:
  *   onStart()    — called when customer taps "Start Order"
@@ -50,13 +50,14 @@ export default function KioskWelcomeScreen({ onStart, outletName }) {
 
 const styles = {
   container: {
+    position: "fixed",
+    top: 0, left: 0, right: 0, bottom: 0,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: "100vh",
     width: "100%",
-    background: "linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%)",
+    background: "linear-gradient(180deg, var(--bg-primary) 0%, #f0fdf4 100%)",
     padding: 32,
     boxSizing: "border-box",
     cursor: "pointer",
@@ -66,7 +67,7 @@ const styles = {
   outletName: {
     fontSize: 48,
     fontWeight: 800,
-    color: "#111827",
+    color: "var(--text-primary)",
     textAlign: "center",
     margin: 0,
     letterSpacing: "-0.5px",
@@ -74,7 +75,7 @@ const styles = {
   },
   tagline: {
     fontSize: 20,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     textAlign: "center",
     margin: "12px 0 48px 0",
     fontWeight: 400,
@@ -98,7 +99,7 @@ const styles = {
   },
   helperText: {
     fontSize: 16,
-    color: "#9ca3af",
+    color: "var(--text-dim)",
     textAlign: "center",
     marginTop: 20,
     fontWeight: 400,
@@ -106,7 +107,7 @@ const styles = {
   },
   footer: {
     fontSize: 13,
-    color: "#d1d5db",
+    color: "var(--border)",
     textAlign: "center",
     margin: 0,
     paddingBottom: 16,

@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 
 /**
  * KioskPhoneScreen — Customer phone number entry with numpad.
- * Matching Rasoi-style layout. Always light theme with green accent.
+ * Matching Rasoi-style layout. Supports light/dark theme via CSS variables.
  *
  * Props:
  *   onConfirm(phone) — called with 10-digit phone string
@@ -86,7 +86,7 @@ export default function KioskPhoneScreen({ onConfirm, onSkip }) {
                 disabled={digits.length === 0}
                 aria-label="Backspace"
               >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2z" />
                   <line x1="18" y1="9" x2="12" y2="15" />
                   <line x1="12" y1="9" x2="18" y2="15" />
@@ -130,12 +130,13 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    minHeight: "100vh",
     width: "100%",
-    background: "#ffffff",
+    background: "var(--bg-primary)",
     padding: "32px 24px",
     boxSizing: "border-box",
-    position: "relative",
+    position: "fixed",
+    top: 0, left: 0, right: 0, bottom: 0,
+    overflowY: "auto",
     userSelect: "none",
     WebkitTapHighlightColor: "transparent",
   },
@@ -145,7 +146,7 @@ const styles = {
     right: 24,
     background: "none",
     border: "none",
-    color: "#6b7280",
+    color: "var(--text-muted)",
     fontSize: 17,
     fontWeight: 600,
     cursor: "pointer",
@@ -161,14 +162,14 @@ const styles = {
   title: {
     fontSize: 32,
     fontWeight: 800,
-    color: "#111827",
+    color: "var(--text-primary)",
     textAlign: "center",
     margin: "48px 0 8px 0",
     lineHeight: 1.2,
   },
   subtitle: {
     fontSize: 16,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     textAlign: "center",
     margin: "0 0 32px 0",
     maxWidth: 380,
@@ -179,8 +180,8 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     gap: 12,
-    background: "#f8fafc",
-    border: "2px solid #e5e7eb",
+    background: "var(--bg-primary)",
+    border: "2px solid var(--border-light)",
     borderRadius: 16,
     padding: "16px 24px",
     minHeight: 64,
@@ -192,18 +193,18 @@ const styles = {
   countryCode: {
     fontSize: 24,
     fontWeight: 700,
-    color: "#374151",
+    color: "var(--text-secondary)",
   },
   phoneDigits: {
     fontSize: 28,
     fontWeight: 700,
-    color: "#111827",
+    color: "var(--text-primary)",
     letterSpacing: "2px",
     fontVariantNumeric: "tabular-nums",
   },
   validationHint: {
     fontSize: 13,
-    color: "#9ca3af",
+    color: "var(--text-dim)",
     margin: "4px 0 0 0",
     textAlign: "center",
   },
@@ -221,9 +222,9 @@ const styles = {
     minWidth: 56,
     fontSize: 26,
     fontWeight: 700,
-    color: "#111827",
-    background: "#f8fafc",
-    border: "1px solid #e5e7eb",
+    color: "var(--text-primary)",
+    background: "var(--bg-primary)",
+    border: "1px solid var(--border-light)",
     borderRadius: 14,
     cursor: "pointer",
     display: "flex",
@@ -258,7 +259,7 @@ const styles = {
     touchAction: "manipulation",
   },
   confirmButtonDisabled: {
-    background: "#d1d5db",
+    background: "var(--border)",
     boxShadow: "none",
     cursor: "default",
   },

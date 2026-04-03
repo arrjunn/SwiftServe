@@ -90,13 +90,14 @@ const styles = {
   wrapper: {
     position: "fixed",
     top: 0, left: 0, right: 0, bottom: 0,
-    backgroundColor: "#ffffff",
+    backgroundColor: "var(--bg-primary)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
     padding: 24,
+    overflowY: "auto",
   },
   container: {
     maxWidth: 420,
@@ -123,7 +124,7 @@ const styles = {
   title: {
     fontSize: 32,
     fontWeight: 800,
-    color: "#111827",
+    color: "var(--text-primary)",
     margin: 0,
     textAlign: "center",
   },
@@ -142,27 +143,27 @@ const styles = {
 
   /* ---- Order Number Card ---- */
   orderCard: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "var(--bg-primary)",
     borderRadius: 20,
     padding: "24px 40px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     gap: 4,
-    border: "2px solid #e5e7eb",
+    border: "2px solid var(--border-light)",
     marginTop: 8,
   },
   orderLabel: {
     fontSize: 14,
     fontWeight: 600,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     textTransform: "uppercase",
     letterSpacing: 1,
   },
   orderNumber: {
     fontSize: 64,
     fontWeight: 800,
-    color: "#111827",
+    color: "var(--text-primary)",
     lineHeight: 1.1,
   },
 
@@ -174,7 +175,7 @@ const styles = {
   },
   summaryText: {
     fontSize: 16,
-    color: "#374151",
+    color: "var(--text-secondary)",
     fontWeight: 600,
   },
 
@@ -206,7 +207,7 @@ const styles = {
   },
   autoText: {
     fontSize: 13,
-    color: "#9ca3af",
+    color: "var(--text-dim)",
     margin: 0,
     marginTop: 4,
   },

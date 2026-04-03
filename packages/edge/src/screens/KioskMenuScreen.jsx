@@ -6,7 +6,7 @@ import { formatINR } from "@swiftserve/shared";
 
 /**
  * KioskMenuScreen — Customer-facing menu browser for kiosk self-ordering.
- * Light/white theme with green (#22c55e) accents. All touch targets >= 56px.
+ * Supports light/dark theme via CSS variables. Green (#22c55e) accents. All touch targets >= 56px.
  *
  * Props:
  *   onCheckout() — called when customer taps the checkout bar
@@ -140,7 +140,7 @@ export default function KioskMenuScreen({ onCheckout }) {
       {/* Search bar */}
       <div style={styles.searchWrapper}>
         <div style={styles.searchBar}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
@@ -296,28 +296,30 @@ export default function KioskMenuScreen({ onCheckout }) {
 
 const styles = {
   container: {
+    position: "fixed",
+    top: 0, left: 0, right: 0, bottom: 0,
     display: "flex",
     flexDirection: "column",
-    minHeight: "100vh",
-    width: "100%",
-    background: "#f8fafc",
+    background: "var(--bg-primary)",
+    color: "var(--text-primary)",
     boxSizing: "border-box",
     userSelect: "none",
     WebkitTapHighlightColor: "transparent",
-    position: "relative",
+    overflow: "hidden",
   },
   loadingContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: "100vh",
-    background: "#f8fafc",
+    height: "100vh",
+    background: "var(--bg-primary)",
+    color: "var(--text-muted)",
   },
   loadingSpinner: {
     width: 48,
     height: 48,
-    border: "4px solid #e5e7eb",
+    border: "4px solid var(--border-light)",
     borderTopColor: "#22c55e",
     borderRadius: "50%",
     animation: "spin 0.8s linear infinite",
@@ -325,7 +327,7 @@ const styles = {
   loadingText: {
     marginTop: 16,
     fontSize: 18,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     fontWeight: 500,
   },
 
@@ -334,7 +336,7 @@ const styles = {
     position: "sticky",
     top: 0,
     zIndex: 20,
-    background: "#ffffff",
+    background: "var(--bg-primary)",
     padding: "16px 16px 12px 16px",
     boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
   },
@@ -342,7 +344,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: 10,
-    background: "#f1f5f9",
+    background: "var(--bg-secondary)",
     borderRadius: 14,
     padding: "0 16px",
     height: 56,
@@ -354,14 +356,14 @@ const styles = {
     outline: "none",
     background: "transparent",
     fontSize: 17,
-    color: "#111827",
+    color: "var(--text-primary)",
     padding: 0,
     fontFamily: "inherit",
   },
   searchClear: {
     background: "none",
     border: "none",
-    color: "#9ca3af",
+    color: "var(--text-dim)",
     fontSize: 18,
     cursor: "pointer",
     padding: "8px",
@@ -375,8 +377,8 @@ const styles = {
 
   // Category tabs
   categoryBar: {
-    background: "#ffffff",
-    borderBottom: "1px solid #e5e7eb",
+    background: "var(--bg-primary)",
+    borderBottom: "1px solid var(--border-light)",
     position: "sticky",
     top: 84,
     zIndex: 19,
@@ -396,8 +398,8 @@ const styles = {
     minHeight: 56,
     fontSize: 15,
     fontWeight: 600,
-    color: "#6b7280",
-    background: "#f1f5f9",
+    color: "var(--text-muted)",
+    background: "var(--bg-secondary)",
     border: "none",
     borderRadius: 12,
     cursor: "pointer",
@@ -413,10 +415,13 @@ const styles = {
 
   // Menu grid
   menuGrid: {
+    flex: 1,
+    overflowY: "auto",
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
     gap: 16,
     padding: 16,
+    alignContent: "start",
   },
   emptyState: {
     gridColumn: "1 / -1",
@@ -427,13 +432,13 @@ const styles = {
   },
   emptyText: {
     fontSize: 17,
-    color: "#9ca3af",
+    color: "var(--text-dim)",
     textAlign: "center",
   },
 
   // Menu card
   card: {
-    background: "#ffffff",
+    background: "var(--bg-primary)",
     borderRadius: 16,
     overflow: "hidden",
     boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
@@ -443,7 +448,7 @@ const styles = {
   cardImage: {
     width: "100%",
     height: 140,
-    background: "#f1f5f9",
+    background: "var(--bg-secondary)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -458,7 +463,7 @@ const styles = {
   cardInitial: {
     fontSize: 42,
     fontWeight: 800,
-    color: "#d1d5db",
+    color: "var(--border)",
   },
   foodTypeWrapper: {
     position: "absolute",
@@ -473,7 +478,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "#ffffff",
+    background: "var(--bg-primary)",
   },
   vegCircle: {
     width: 10,
@@ -489,7 +494,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "#ffffff",
+    background: "var(--bg-primary)",
   },
   nonVegTriangle: {
     width: 0,
@@ -509,13 +514,13 @@ const styles = {
   cardName: {
     fontSize: 18,
     fontWeight: 700,
-    color: "#111827",
+    color: "var(--text-primary)",
     margin: 0,
     lineHeight: 1.3,
   },
   cardDesc: {
     fontSize: 13,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     margin: "4px 0 0 0",
     lineHeight: 1.4,
   },
@@ -585,7 +590,7 @@ const styles = {
   qtyText: {
     fontSize: 18,
     fontWeight: 700,
-    color: "#111827",
+    color: "var(--text-primary)",
     minWidth: 28,
     textAlign: "center",
   },

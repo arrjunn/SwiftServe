@@ -106,7 +106,7 @@ export default function KioskCartScreen({ onPay, onBackToMenu }) {
             <span>{formatINR(order.taxTotal)}</span>
           </div>
           {order.roundOff !== 0 && (
-            <div style={{ ...styles.billRow, fontSize: 13, color: "#9ca3af" }}>
+            <div style={{ ...styles.billRow, fontSize: 13, color: "var(--text-dim)" }}>
               <span>Round off</span>
               <span>{order.roundOff > 0 ? "+" : ""}{formatINR(order.roundOff)}</span>
             </div>
@@ -134,7 +134,7 @@ const styles = {
   wrapper: {
     position: "fixed",
     top: 0, left: 0, right: 0, bottom: 0,
-    backgroundColor: "#ffffff",
+    backgroundColor: "var(--bg-primary)",
     display: "flex",
     flexDirection: "column",
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
@@ -153,7 +153,7 @@ const styles = {
   title: {
     fontSize: 28,
     fontWeight: 800,
-    color: "#111827",
+    color: "var(--text-primary)",
     margin: 0,
     textAlign: "center",
   },
@@ -163,12 +163,14 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: 12,
+    flex: 1,
+    overflowY: "auto",
   },
   itemCard: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "var(--bg-primary)",
     borderRadius: 14,
     padding: 16,
-    border: "1px solid #e5e7eb",
+    border: "1px solid var(--border-light)",
   },
   itemTop: {
     display: "flex",
@@ -195,21 +197,21 @@ const styles = {
   itemName: {
     fontSize: 16,
     fontWeight: 600,
-    color: "#111827",
+    color: "var(--text-primary)",
   },
   variantText: {
     fontSize: 13,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     fontStyle: "italic",
   },
   itemUnitPrice: {
     fontSize: 13,
-    color: "#6b7280",
+    color: "var(--text-muted)",
   },
   lineTotal: {
     fontSize: 16,
     fontWeight: 700,
-    color: "#111827",
+    color: "var(--text-primary)",
     flexShrink: 0,
     marginTop: 2,
   },
@@ -245,7 +247,7 @@ const styles = {
     textAlign: "center",
     fontSize: 18,
     fontWeight: 700,
-    color: "#111827",
+    color: "var(--text-primary)",
   },
   removeBtn: {
     minHeight: 44,
@@ -262,16 +264,16 @@ const styles = {
 
   /* ---- Bill Summary ---- */
   billCard: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "var(--bg-primary)",
     borderRadius: 14,
     padding: 20,
-    border: "1px solid #e5e7eb",
+    border: "1px solid var(--border-light)",
     marginTop: 8,
   },
   billTitle: {
     fontSize: 16,
     fontWeight: 700,
-    color: "#374151",
+    color: "var(--text-secondary)",
     margin: "0 0 12px 0",
     textTransform: "uppercase",
     letterSpacing: 0.5,
@@ -280,7 +282,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     fontSize: 15,
-    color: "#374151",
+    color: "var(--text-secondary)",
     padding: "4px 0",
   },
   billTotal: {
@@ -288,8 +290,8 @@ const styles = {
     justifyContent: "space-between",
     fontSize: 20,
     fontWeight: 800,
-    color: "#111827",
-    borderTop: "2px solid #e5e7eb",
+    color: "var(--text-primary)",
+    borderTop: "2px solid var(--border-light)",
     marginTop: 8,
     paddingTop: 12,
   },
@@ -315,9 +317,9 @@ const styles = {
     minHeight: 56,
     padding: "14px 24px",
     backgroundColor: "transparent",
-    border: "2px solid #e5e7eb",
+    border: "2px solid var(--border-light)",
     borderRadius: 14,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     fontSize: 16,
     fontWeight: 600,
     cursor: "pointer",
@@ -341,12 +343,12 @@ const styles = {
   emptyTitle: {
     fontSize: 24,
     fontWeight: 700,
-    color: "#111827",
+    color: "var(--text-primary)",
     margin: 0,
   },
   emptyText: {
     fontSize: 16,
-    color: "#6b7280",
+    color: "var(--text-muted)",
     margin: 0,
   },
   browseBtn: {
