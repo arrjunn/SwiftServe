@@ -1,0 +1,35 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1' # Every Monday at 6 AM UTC
+
+jobs:
+  audit:
+    name: Dependency Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --omit=dev || true
+
+      - name: Check for .env files in repo
+        run: |
+          echo "Checking for leaked secrets..."
+          if find . -name ".env" -not -path "./node_modules/*" -not -name ".env.example" | grep -q .; then
+            echo "WARNING: .env file found in repo!"
+            exit 1
+          fi
+          echo "No .env files found. Safe."
