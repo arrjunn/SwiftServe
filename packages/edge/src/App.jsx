@@ -158,52 +158,57 @@ function AppRouter() {
           const existingItems = await db.menu_items.where("outlet_id").equals(oid).toArray();
           const existingNames = new Set(existingItems.map(i => i.name));
 
+          const PX = "https://images.pexels.com/photos/";
+          const PXS = "/pexels-photo-";
+          const PXE = ".jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop";
+          const img = (id) => `${PX}${id}${PXS}${id}${PXE}`;
+
           const fullMenu = [
             // Burgers (7)
-            {c:"Burgers",n:"Classic Veg Burger",s:"Veg Burger",p:12900,t:"veg",st:"grill",pr:8},
-            {c:"Burgers",n:"Paneer Tikka Burger",s:"Pnr Tikka",p:15900,t:"veg",st:"grill",pr:10},
-            {c:"Burgers",n:"Chicken Burger",s:"Chk Burger",p:14900,t:"non_veg",st:"grill",pr:10},
-            {c:"Burgers",n:"Double Chicken Burger",s:"Dbl Chk",p:19900,t:"non_veg",st:"grill",pr:12},
-            {c:"Burgers",n:"Aloo Tikki Burger",s:"Aloo Tkki",p:9900,t:"veg",st:"grill",pr:7},
-            {c:"Burgers",n:"Spicy Chicken Zinger",s:"Zinger",p:17900,t:"non_veg",st:"grill",pr:10},
-            {c:"Burgers",n:"Mushroom Swiss Burger",s:"Mush Burg",p:16900,t:"veg",st:"grill",pr:10},
+            {c:"Burgers",n:"Classic Veg Burger",s:"Veg Burger",p:12900,t:"veg",st:"grill",pr:8,i:img(1639557)},
+            {c:"Burgers",n:"Paneer Tikka Burger",s:"Pnr Tikka",p:15900,t:"veg",st:"grill",pr:10,i:img(614692)},
+            {c:"Burgers",n:"Chicken Burger",s:"Chk Burger",p:14900,t:"non_veg",st:"grill",pr:10,i:img(11354334)},
+            {c:"Burgers",n:"Double Chicken Burger",s:"Dbl Chk",p:19900,t:"non_veg",st:"grill",pr:12,i:img(3826273)},
+            {c:"Burgers",n:"Aloo Tikki Burger",s:"Aloo Tkki",p:9900,t:"veg",st:"grill",pr:7,i:img(1199957)},
+            {c:"Burgers",n:"Spicy Chicken Zinger",s:"Zinger",p:17900,t:"non_veg",st:"grill",pr:10,i:img(10922931)},
+            {c:"Burgers",n:"Mushroom Swiss Burger",s:"Mush Burg",p:16900,t:"veg",st:"grill",pr:10,i:img(3219483)},
             // Wraps (6)
-            {c:"Wraps",n:"Paneer Kathi Roll",s:"Pnr Roll",p:13900,t:"veg",st:"grill",pr:8},
-            {c:"Wraps",n:"Chicken Kathi Roll",s:"Chk Roll",p:15900,t:"non_veg",st:"grill",pr:9},
-            {c:"Wraps",n:"Egg Roll",s:"Egg Roll",p:11900,t:"egg",st:"grill",pr:7},
-            {c:"Wraps",n:"Veg Frankie",s:"Veg Frank",p:10900,t:"veg",st:"grill",pr:6},
-            {c:"Wraps",n:"Chicken Shawarma",s:"Shawarma",p:16900,t:"non_veg",st:"grill",pr:10},
-            {c:"Wraps",n:"Paneer Tikka Wrap",s:"Pnr Wrap",p:14900,t:"veg",st:"grill",pr:8},
+            {c:"Wraps",n:"Paneer Kathi Roll",s:"Pnr Roll",p:13900,t:"veg",st:"grill",pr:8,i:img(28674559)},
+            {c:"Wraps",n:"Chicken Kathi Roll",s:"Chk Roll",p:15900,t:"non_veg",st:"grill",pr:9,i:img(2474658)},
+            {c:"Wraps",n:"Egg Roll",s:"Egg Roll",p:11900,t:"egg",st:"grill",pr:7,i:img(5773960)},
+            {c:"Wraps",n:"Veg Frankie",s:"Veg Frank",p:10900,t:"veg",st:"grill",pr:6,i:img(2089717)},
+            {c:"Wraps",n:"Chicken Shawarma",s:"Shawarma",p:16900,t:"non_veg",st:"grill",pr:10,i:img(6941009)},
+            {c:"Wraps",n:"Paneer Tikka Wrap",s:"Pnr Wrap",p:14900,t:"veg",st:"grill",pr:8,i:img(10337726)},
             // Sides (6)
-            {c:"Sides",n:"French Fries",s:"Fries",p:7900,t:"veg",st:"fryer",pr:5},
-            {c:"Sides",n:"Peri Peri Fries",s:"PP Fries",p:9900,t:"veg",st:"fryer",pr:5},
-            {c:"Sides",n:"Chicken Nuggets (6pc)",s:"Nuggets",p:12900,t:"non_veg",st:"fryer",pr:6},
-            {c:"Sides",n:"Onion Rings",s:"Onion Rng",p:8900,t:"veg",st:"fryer",pr:5},
-            {c:"Sides",n:"Coleslaw",s:"Coleslaw",p:5900,t:"veg",st:"assembly",pr:2},
-            {c:"Sides",n:"Garlic Bread (4pc)",s:"Garlic Bd",p:9900,t:"veg",st:"grill",pr:6},
+            {c:"Sides",n:"French Fries",s:"Fries",p:7900,t:"veg",st:"fryer",pr:5,i:img(1583891)},
+            {c:"Sides",n:"Peri Peri Fries",s:"PP Fries",p:9900,t:"veg",st:"fryer",pr:5,i:img(2962450)},
+            {c:"Sides",n:"Chicken Nuggets (6pc)",s:"Nuggets",p:12900,t:"non_veg",st:"fryer",pr:6,i:img(8272619)},
+            {c:"Sides",n:"Onion Rings",s:"Onion Rng",p:8900,t:"veg",st:"fryer",pr:5,i:img(1109195)},
+            {c:"Sides",n:"Coleslaw",s:"Coleslaw",p:5900,t:"veg",st:"assembly",pr:2,i:img(3649535)},
+            {c:"Sides",n:"Garlic Bread (4pc)",s:"Garlic Bd",p:9900,t:"veg",st:"grill",pr:6,i:img(13698106)},
             // Beverages (8)
-            {c:"Beverages",n:"Coke 300ml",s:"Coke",p:4900,t:"veg",st:"assembly",pr:1},
-            {c:"Beverages",n:"Sprite 300ml",s:"Sprite",p:4900,t:"veg",st:"assembly",pr:1},
-            {c:"Beverages",n:"Fresh Lime Soda",s:"Lime Soda",p:6900,t:"veg",st:"assembly",pr:3},
-            {c:"Beverages",n:"Mango Lassi",s:"Mng Lassi",p:7900,t:"veg",st:"assembly",pr:3},
-            {c:"Beverages",n:"Cold Coffee",s:"Cold Coff",p:8900,t:"veg",st:"assembly",pr:4},
-            {c:"Beverages",n:"Masala Chai",s:"Chai",p:3900,t:"veg",st:"assembly",pr:3},
-            {c:"Beverages",n:"Oreo Milkshake",s:"Oreo Shk",p:11900,t:"veg",st:"assembly",pr:4},
-            {c:"Beverages",n:"Mineral Water 500ml",s:"Water",p:2000,t:"veg",st:"assembly",pr:0},
+            {c:"Beverages",n:"Coke 300ml",s:"Coke",p:4900,t:"veg",st:"assembly",pr:1,i:img(2983100)},
+            {c:"Beverages",n:"Sprite 300ml",s:"Sprite",p:4900,t:"veg",st:"assembly",pr:1,i:img(4021872)},
+            {c:"Beverages",n:"Fresh Lime Soda",s:"Lime Soda",p:6900,t:"veg",st:"assembly",pr:3,i:img(8679341)},
+            {c:"Beverages",n:"Mango Lassi",s:"Mng Lassi",p:7900,t:"veg",st:"assembly",pr:3,i:img(14509267)},
+            {c:"Beverages",n:"Cold Coffee",s:"Cold Coff",p:8900,t:"veg",st:"assembly",pr:4,i:img(8605616)},
+            {c:"Beverages",n:"Masala Chai",s:"Chai",p:3900,t:"veg",st:"assembly",pr:3,i:img(6808666)},
+            {c:"Beverages",n:"Oreo Milkshake",s:"Oreo Shk",p:11900,t:"veg",st:"assembly",pr:4,i:img(17558646)},
+            {c:"Beverages",n:"Mineral Water 500ml",s:"Water",p:2000,t:"veg",st:"assembly",pr:0,i:img(15763942)},
             // Desserts (6)
-            {c:"Desserts",n:"Chocolate Brownie",s:"Brownie",p:8900,t:"veg",st:"assembly",pr:2},
-            {c:"Desserts",n:"Gulab Jamun (2pc)",s:"Gulab J",p:6900,t:"veg",st:"assembly",pr:2},
-            {c:"Desserts",n:"Kulfi",s:"Kulfi",p:5900,t:"veg",st:"assembly",pr:1},
-            {c:"Desserts",n:"Chocolate Lava Cake",s:"Lava Cake",p:12900,t:"veg",st:"assembly",pr:3},
-            {c:"Desserts",n:"Ice Cream Sundae",s:"Sundae",p:9900,t:"veg",st:"assembly",pr:2},
-            {c:"Desserts",n:"Rasgulla (2pc)",s:"Rasgulla",p:5900,t:"veg",st:"assembly",pr:1},
+            {c:"Desserts",n:"Chocolate Brownie",s:"Brownie",p:8900,t:"veg",st:"assembly",pr:2,i:img(11076351)},
+            {c:"Desserts",n:"Gulab Jamun (2pc)",s:"Gulab J",p:6900,t:"veg",st:"assembly",pr:2,i:img(11887844)},
+            {c:"Desserts",n:"Kulfi",s:"Kulfi",p:5900,t:"veg",st:"assembly",pr:1,i:img(3825995)},
+            {c:"Desserts",n:"Chocolate Lava Cake",s:"Lava Cake",p:12900,t:"veg",st:"assembly",pr:3,i:img(19940993)},
+            {c:"Desserts",n:"Ice Cream Sundae",s:"Sundae",p:9900,t:"veg",st:"assembly",pr:2,i:img(2161624)},
+            {c:"Desserts",n:"Rasgulla (2pc)",s:"Rasgulla",p:5900,t:"veg",st:"assembly",pr:1,i:img(7449105)},
             // Combos (6)
-            {c:"Combos",n:"Veg Burger + Fries + Coke",s:"Veg Combo",p:22900,t:"veg",st:"assembly",pr:10},
-            {c:"Combos",n:"Chicken Burger + Fries + Coke",s:"Chk Combo",p:25900,t:"non_veg",st:"assembly",pr:12},
-            {c:"Combos",n:"Roll + Fries + Drink",s:"Roll Combo",p:21900,t:"veg",st:"assembly",pr:10},
-            {c:"Combos",n:"Double Burger + Fries + Shake",s:"Mega Combo",p:34900,t:"non_veg",st:"assembly",pr:15},
-            {c:"Combos",n:"Wrap + Nuggets + Drink",s:"Wrap Combo",p:27900,t:"non_veg",st:"assembly",pr:12},
-            {c:"Combos",n:"Family Pack (4 Burgers + 2 Fries + 4 Drinks)",s:"Family Pk",p:69900,t:"veg",st:"assembly",pr:18},
+            {c:"Combos",n:"Veg Burger + Fries + Coke",s:"Veg Combo",p:22900,t:"veg",st:"assembly",pr:10,i:img(4109268)},
+            {c:"Combos",n:"Chicken Burger + Fries + Coke",s:"Chk Combo",p:25900,t:"non_veg",st:"assembly",pr:12,i:img(70497)},
+            {c:"Combos",n:"Roll + Fries + Drink",s:"Roll Combo",p:21900,t:"veg",st:"assembly",pr:10,i:img(2271107)},
+            {c:"Combos",n:"Double Burger + Fries + Shake",s:"Mega Combo",p:34900,t:"non_veg",st:"assembly",pr:15,i:img(2340204)},
+            {c:"Combos",n:"Wrap + Nuggets + Drink",s:"Wrap Combo",p:27900,t:"non_veg",st:"assembly",pr:12,i:img(11213791)},
+            {c:"Combos",n:"Family Pack (4 Burgers + 2 Fries + 4 Drinks)",s:"Family Pk",p:69900,t:"veg",st:"assembly",pr:18,i:img(2454533)},
           ];
 
           const newItems = fullMenu.filter(it => !existingNames.has(it.n));
@@ -218,11 +223,23 @@ function AppRouter() {
                 name: it.n, short_name: it.s, price: it.p, tax_rate: 500, hsn_code: "9963",
                 food_type: it.t, is_available: 1, is_active: 1, prep_time_mins: it.pr || 5,
                 station: it.st, sort_order: existingItems.length + i + 1,
+                image_url: it.i || null,
                 variants: "[]", addons: "[]", tags: "[]",
                 created_at: now, updated_at: now,
               });
             }
             console.log(`[APP] Added ${newItems.length} new menu items.`);
+          }
+
+          // Backfill image_url on existing items that don't have one
+          const imageMap = {};
+          fullMenu.forEach(it => { imageMap[it.n] = it.i; });
+          const itemsMissingImages = existingItems.filter(it => !it.image_url && imageMap[it.name]);
+          if (itemsMissingImages.length > 0) {
+            for (const item of itemsMissingImages) {
+              await db.menu_items.update(item.id, { image_url: imageMap[item.name] });
+            }
+            console.log(`[APP] Backfilled images on ${itemsMissingImages.length} menu items.`);
           }
 
           // Auto-fill tables up to 20
