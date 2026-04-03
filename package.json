@@ -1,0 +1,21 @@
+{
+  "name": "swiftserve",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/shared",
+    "packages/edge",
+    "packages/cloud"
+  ],
+  "scripts": {
+    "dev:edge": "npm run dev -w packages/edge",
+    "dev:cloud": "npm run dev -w packages/cloud",
+    "dev": "concurrently \"npm run dev:edge\" \"npm run dev:cloud\"",
+    "build:edge": "npm run build -w packages/edge",
+    "build:cloud": "npm run build -w packages/cloud",
+    "test": "npm test -w packages/shared"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
